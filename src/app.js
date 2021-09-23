@@ -23,7 +23,7 @@ function createRandomNumber (maxNumber, minNumber)
   
     return num;
 }
-createRandomNumber(10000, 50000);
+//createRandomNumber(10000, 50000);
 
  /**
   * @function ertellt from word erst upper und rest lowercase
@@ -33,7 +33,7 @@ createRandomNumber(10000, 50000);
 
 function capitalizeString(word)
 {
-    if ( word === undefined || word.length === 0 || word == typeof(Number))
+    if ( word === undefined || word.length === 0 || !isNaN(word))
     {
         return "Default";
     }
@@ -44,4 +44,26 @@ function capitalizeString(word)
     return wordStart+wordRest;
 }
 
-console.log(capitalizeString("kismikulas"));
+//console.log(capitalizeString("kismikulas"));
+
+
+function createRandomUsername(maxNumber)
+{
+    const words = getWords();
+
+    const adj = words.adjs[Math.floor(Math.random() * (words.adjs.length - 1))];
+
+    console.log(adj);
+
+    const noun =  words.nouns[Math.floor(Math.random() * (words.nouns.length - 1))];
+
+    console.log(noun);
+
+    const randomNummer = createRandomNumber(10000, maxNumber);
+
+    const finalUserName = `${capitalizeString(adj)}${capitalizeString(noun)}${maxNumber !== 0 ? randomNummer : ''}`;
+
+    console.log(finalUserName);
+}
+
+createRandomUsername(50000);
